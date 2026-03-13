@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -11,6 +13,9 @@ public class GnomeController : MonoBehaviour
     private static Vector3 isoForward = new Vector3( 1, 0,  1).normalized; // W
     private CharacterController controller;
     private Vector3 input, moveDirection;
+    private float currentVelocity;
+    private float smoothSpeed = .1f;
+    public ParticleSystem runprt;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -18,11 +23,6 @@ public class GnomeController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-    }
-
-    void FixedUpdate()
     {
         // get input
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -40,6 +40,21 @@ public class GnomeController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * speed * Time.deltaTime);
+        
+        if (moveDirection.magnitude > .1f)
+        {
+            float rotationAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
+            float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, rotationAngle, ref currentVelocity, smoothSpeed);
+            transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
+            if (runprt.isStopped)
+            {
+                runprt.Play();
+            }
+        }
+        else
+        {
+            runprt.Stop();
+        }
     }
 
     void Jump()
