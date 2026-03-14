@@ -1,5 +1,4 @@
-using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -16,6 +15,9 @@ public class GnomeController : MonoBehaviour
     private float currentVelocity;
     private float smoothSpeed = .1f;
     public ParticleSystem runprt;
+    public PickupDetection pd;
+    private GameObject carrying;
+    private Vector3 throwDirection;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -40,13 +42,15 @@ public class GnomeController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * speed * Time.deltaTime);
+        throwDirection = transform.forward * 7;
+        throwDirection.y = 7;
         
-        if (moveDirection.magnitude > .1f)
+        if (moveDirection.magnitude > .2f)
         {
             float rotationAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
             float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, rotationAngle, ref currentVelocity, smoothSpeed);
             transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
-            if (runprt.isStopped)
+            if (runprt.isStopped && controller.isGrounded)
             {
                 runprt.Play();
             }
@@ -54,6 +58,29 @@ public class GnomeController : MonoBehaviour
         else
         {
             runprt.Stop();
+        }
+
+        if (carrying)
+        {
+            carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 2.75f, transform.position.z);
+            carrying.transform.rotation = transform.rotation;
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!carrying && pd.getTarget() != null)
+            {
+                carrying = pd.getTarget();
+                carrying.GetComponent<Rigidbody>().isKinematic = true;
+                carrying.GetComponent<BoxCollider>().enabled = false;
+            }
+            else if (carrying)
+            {
+                carrying.GetComponent<Rigidbody>().isKinematic = false;
+                carrying.GetComponent<BoxCollider>().enabled = true;
+                carrying.GetComponent<Rigidbody>().linearVelocity = throwDirection;
+                carrying = null;
+            }
         }
     }
 
@@ -77,6 +104,7 @@ public class GnomeController : MonoBehaviour
             // midair
             input.y = moveDirection.y;
             moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
+            runprt.Stop();
         }
     }
 }
