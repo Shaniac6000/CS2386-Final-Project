@@ -2457,7 +2457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e481d7c8069a5404983b8106bf5b6653, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeManager
-  activeGnome: {fileID: 0}
+  activeGnome: {fileID: 799247003}
 --- !u!4 &722962757
 Transform:
   m_ObjectHideFlags: 0
@@ -2794,6 +2794,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796822288}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &799247003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4027533373226938690, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+  m_PrefabInstance: {fileID: 1662670084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -4543,6 +4548,95 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fba3593b8a5810d4da43a5c7bbeac4df, type: 3}
+--- !u!1001 &1541707227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 33.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 32.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596259480209282962, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220145247917891, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: pd
+      value: 
+      objectReference: {fileID: 1541707228}
+    - target: {fileID: 2774220145247917891, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220145247917891, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: runprt
+      value: 
+      objectReference: {fileID: 1541707229}
+    - target: {fileID: 4027533373226938690, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_Name
+      value: Gnome (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697427465077861840, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+--- !u!114 &1541707228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8492201415144247811, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+  m_PrefabInstance: {fileID: 1541707227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af556d1fe637d0d45b2181489a8473c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+--- !u!198 &1541707229 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7681122811258848129, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+  m_PrefabInstance: {fileID: 1541707227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1565742805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 141439493368223057, guid: d0ceded760c0cfa42b0a7dea6ebca60d, type: 3}
@@ -5136,12 +5230,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1833002897}
     - target: {fileID: 2774220145247917891, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774220145247917891, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
       propertyPath: runprt
       value: 
       objectReference: {fileID: 1976501243}
     - target: {fileID: 4027533373226938690, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
       propertyPath: m_Name
       value: Gnome
+      objectReference: {fileID: 0}
+    - target: {fileID: 8697427465077861840, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6410,3 +6512,4 @@ SceneRoots:
   - {fileID: 1724167449431167274}
   - {fileID: 722962757}
   - {fileID: 1662670084}
+  - {fileID: 1541707227}

@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class GnomeController : MonoBehaviour
 {
+    public bool isActive;
     public float speed;
     public float jumpHeight;
     public float airControl = 10f;
@@ -26,62 +27,66 @@ public class GnomeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // get input
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        // input vector
-        input = isoRight * moveHorizontal + isoForward * moveVertical;
-
-        if (input.magnitude > 1f)
+        if (isActive)
         {
-            input.Normalize();
-        }
+            // get input
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
+
+            // input vector
+            input = isoRight * moveHorizontal + isoForward * moveVertical;
+
+            if (input.magnitude > 1f)
+            {
+                input.Normalize();
+            }
+                
+            Jump();
+
+            moveDirection.y -= gravity * Time.deltaTime;
+            controller.Move(moveDirection * speed * Time.deltaTime);
+            throwDirection = transform.forward * 7;
+            throwDirection.y = 7;
             
-        Jump();
+            if (moveDirection.magnitude > .2f)
+            {
+                float rotationAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
+                float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, rotationAngle, ref currentVelocity, smoothSpeed);
+                transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
+                if (runprt.isStopped && controller.isGrounded)
+                {
+                    runprt.Play();
+                }
+            }
+            else
+            {
+                runprt.Stop();
+            }
 
-        moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * speed * Time.deltaTime);
-        throwDirection = transform.forward * 7;
-        throwDirection.y = 7;
+            if (carrying)
+            {
+                carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 2.75f, transform.position.z);
+                carrying.transform.rotation = transform.rotation;
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (!carrying && pd.getTarget() != null)
+                {
+                    carrying = pd.getTarget();
+                    carrying.GetComponent<Rigidbody>().isKinematic = true;
+                    carrying.GetComponent<BoxCollider>().enabled = false;
+                }
+                else if (carrying)
+                {
+                    carrying.GetComponent<Rigidbody>().isKinematic = false;
+                    carrying.GetComponent<BoxCollider>().enabled = true;
+                    carrying.GetComponent<Rigidbody>().linearVelocity = throwDirection;
+                    carrying = null;
+                }
+            }
+        }
         
-        if (moveDirection.magnitude > .2f)
-        {
-            float rotationAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
-            float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, rotationAngle, ref currentVelocity, smoothSpeed);
-            transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
-            if (runprt.isStopped && controller.isGrounded)
-            {
-                runprt.Play();
-            }
-        }
-        else
-        {
-            runprt.Stop();
-        }
-
-        if (carrying)
-        {
-            carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 2.75f, transform.position.z);
-            carrying.transform.rotation = transform.rotation;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (!carrying && pd.getTarget() != null)
-            {
-                carrying = pd.getTarget();
-                carrying.GetComponent<Rigidbody>().isKinematic = true;
-                carrying.GetComponent<BoxCollider>().enabled = false;
-            }
-            else if (carrying)
-            {
-                carrying.GetComponent<Rigidbody>().isKinematic = false;
-                carrying.GetComponent<BoxCollider>().enabled = true;
-                carrying.GetComponent<Rigidbody>().linearVelocity = throwDirection;
-                carrying = null;
-            }
-        }
     }
 
     void Jump()

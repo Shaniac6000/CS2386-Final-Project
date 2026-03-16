@@ -25,4 +25,9 @@ public class CameraFollow : MonoBehaviour
         Vector3 pos = target.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, pos, ref velocity, camTime);
     }
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
 }

@@ -5,9 +5,11 @@ public class GnomeManager : MonoBehaviour
     public GameObject activeGnome;
     private GameObject[] gnomes;
     private int activeIndex;
+    private CameraFollow cameraFollow;
     
     void Start()
     {
+        cameraFollow = FindAnyObjectByType<CameraFollow>();
         gnomes = GameObject.FindGameObjectsWithTag("Gnome");
         if (gnomes.Length == 0)
         {
@@ -20,7 +22,9 @@ public class GnomeManager : MonoBehaviour
         }
         else
         {
+            cameraFollow.SetTarget(activeGnome.transform);
             activeIndex = GetGnomeIndex(activeGnome);
+            activeGnome.GetComponent<GnomeController>().isActive = true;
             activeGnome.GetComponent<CharacterController>().enabled = true;
         }
     }
@@ -57,13 +61,16 @@ public class GnomeManager : MonoBehaviour
 
     void ActivateGnome(GameObject gnome, int index)
     {
+        cameraFollow.SetTarget(gnome.transform);
         activeGnome = gnome;
         activeIndex = index;
+        activeGnome.GetComponent<GnomeController>().isActive = true;
         activeGnome.GetComponent<CharacterController>().enabled = true;
     }
 
     void DeactivateCurrentGnome()
     {
+        activeGnome.GetComponent<GnomeController>().isActive = false;
         activeGnome.GetComponent<CharacterController>().enabled = false;
     }
 
