@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class GnomeController : MonoBehaviour
 {
+    public bool isActive = false;
     public float speed;
     public float jumpHeight;
     public float airControl = 10f;
@@ -24,22 +25,26 @@ public class GnomeController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // get input
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        // input vector
-        input = isoRight * moveHorizontal + isoForward * moveVertical;
-
-        if (input.magnitude > 1f)
+        if (isActive)
         {
-            input.Normalize();
-        }
-            
-        Jump();
+            controller = GetComponent<CharacterController>();
+            // get input
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
 
-        moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * speed * Time.deltaTime);
+            // input vector
+            input = isoRight * moveHorizontal + isoForward * moveVertical;
+
+            if (input.magnitude > 1f)
+            {
+                input.Normalize();
+            }
+                
+            Jump();
+
+            moveDirection.y -= gravity * Time.deltaTime;
+            controller.Move(moveDirection * speed * Time.deltaTime);
+        }
     }
 
     void Jump()
