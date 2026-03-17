@@ -112,7 +112,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3980c9b3a0f99c4c8db9622809e7877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeController
+  isActive: 0
   speed: 8
   jumpHeight: 0.75
   airControl: 8
