@@ -6,7 +6,7 @@ public class PickupDetection : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Throwable"))
+        if (other.CompareTag("Throwable") || other.CompareTag("Draggable"))
         {
             target = other.gameObject;
         }
@@ -14,7 +14,7 @@ public class PickupDetection : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Throwable"))
+        if (other.CompareTag("Throwable") || other.CompareTag("Draggable"))
         {
             target = null;
         }

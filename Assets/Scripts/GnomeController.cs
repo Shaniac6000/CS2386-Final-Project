@@ -19,7 +19,9 @@ public class GnomeController : MonoBehaviour
     public ParticleSystem runprt;
     public PickupDetection pd;
     public GameObject carrying {get; private set;}
+    private bool isDragging;
     private Vector3 throwDirection;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -72,8 +74,15 @@ public class GnomeController : MonoBehaviour
 
             if (carrying)
             {
+                if(isDragging)
+                {
+                    carrying.transform.position = Vector3.Lerp(carrying.transform.position, transform.position - transform.forward * 3.5f - transform.up * 0.5f, Time.deltaTime * 15f);
+                }
+                else
+                {
                 carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 2.75f, transform.position.z);
                 carrying.transform.rotation = transform.rotation;
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.E))
@@ -83,13 +92,19 @@ public class GnomeController : MonoBehaviour
                     carrying = pd.getTarget();
                     carrying.GetComponent<Rigidbody>().isKinematic = true;
                     carrying.GetComponent<Collider>().enabled = false;
+                    isDragging = carrying.CompareTag("Draggable");
                 }
                 else if (carrying)
                 {
                     carrying.GetComponent<Rigidbody>().isKinematic = false;
                     carrying.GetComponent<Collider>().enabled = true;
-                    carrying.GetComponent<Rigidbody>().linearVelocity = throwDirection;
+
+                    if(!isDragging)
+                    {
+                        carrying.GetComponent<Rigidbody>().linearVelocity = throwDirection;
+                    }
                     carrying = null;
+                    isDragging = false;
                 }
             }
         }
