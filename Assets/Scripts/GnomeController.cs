@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class GnomeController : MonoBehaviour
@@ -17,7 +18,7 @@ public class GnomeController : MonoBehaviour
     private float smoothSpeed = .1f;
     public ParticleSystem runprt;
     public PickupDetection pd;
-    private GameObject carrying;
+    public GameObject carrying {get; private set;}
     private Vector3 throwDirection;
     void Start()
     {
@@ -27,6 +28,12 @@ public class GnomeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            // reset the level
+            //could add in a wait here but i dont feel like making a coroutine just for that lol
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         if (isActive)
         {
             // get input
@@ -75,12 +82,12 @@ public class GnomeController : MonoBehaviour
                 {
                     carrying = pd.getTarget();
                     carrying.GetComponent<Rigidbody>().isKinematic = true;
-                    carrying.GetComponent<BoxCollider>().enabled = false;
+                    carrying.GetComponent<Collider>().enabled = false;
                 }
                 else if (carrying)
                 {
                     carrying.GetComponent<Rigidbody>().isKinematic = false;
-                    carrying.GetComponent<BoxCollider>().enabled = true;
+                    carrying.GetComponent<Collider>().enabled = true;
                     carrying.GetComponent<Rigidbody>().linearVelocity = throwDirection;
                     carrying = null;
                 }

@@ -66,12 +66,15 @@ public class GnomeManager : MonoBehaviour
         activeIndex = index;
         activeGnome.GetComponent<GnomeController>().isActive = true;
         activeGnome.GetComponent<CharacterController>().enabled = true;
+        activeGnome.GetComponentInChildren<PickupDetection>().enabled = true;
     }
 
     void DeactivateCurrentGnome()
     {
         activeGnome.GetComponent<GnomeController>().isActive = false;
         activeGnome.GetComponent<CharacterController>().enabled = false;
+        activeGnome.GetComponentInChildren<PickupDetection>().ClearTarget();
+        activeGnome.GetComponentInChildren<PickupDetection>().enabled = false;
     }
 
     // find index of given gnome object in gnomes array

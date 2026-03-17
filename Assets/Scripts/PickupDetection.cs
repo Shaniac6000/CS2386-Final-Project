@@ -24,4 +24,9 @@ public class PickupDetection : MonoBehaviour
     {
         return target;
     }
+
+    public void ClearTarget()
+    {
+        target = null;
+    }
 }
