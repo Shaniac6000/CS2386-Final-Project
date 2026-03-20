@@ -7,6 +7,7 @@ TagManager:
   - Gnome
   - Throwable
   - Draggable
+  - LevelManager
   layers:
   - Default
   - TransparentFX
