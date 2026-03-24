@@ -8,6 +8,7 @@ TagManager:
   - Throwable
   - Draggable
   - LevelManager
+  - TrappedTrigger
   layers:
   - Default
   - TransparentFX

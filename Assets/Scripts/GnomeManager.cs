@@ -34,28 +34,12 @@ public class GnomeManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            DeactivateCurrentGnome();
-            if (activeIndex == gnomes.Length - 1)
-            {
-                ActivateGnome(gnomes[0], 0);
-            }
-            else
-            {
-                ActivateGnome(gnomes[activeIndex + 1], activeIndex + 1);
-            }
+            NextGnome();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            DeactivateCurrentGnome();
-            if (activeIndex == 0)
-            {
-                ActivateGnome(gnomes[gnomes.Length - 1], gnomes.Length - 1);
-            }
-            else
-            {
-                ActivateGnome(gnomes[activeIndex - 1], activeIndex - 1);
-            }
+            PrevGnome();
         }
     }
 
@@ -89,4 +73,59 @@ public class GnomeManager : MonoBehaviour
         }
         return -1;
     }
+
+    private void NextGnome()
+    {
+        int newIndex;
+        if (activeIndex == gnomes.Length - 1)
+        {
+            newIndex = 0;
+        }
+        else
+        {
+            newIndex = activeIndex + 1;
+        }
+        if (gnomes[newIndex].GetComponent<TrappedGnome>() && gnomes[newIndex].GetComponent<TrappedGnome>().trapped)
+        {
+            activeIndex = newIndex;
+            NextGnome();
+        }
+        else
+        {
+            if (gnomes[newIndex].GetComponent<TrappedGnome>())
+            {
+                gnomes[newIndex].GetComponent<TrappedGnome>().enabled = false;
+            }
+            DeactivateCurrentGnome();
+            ActivateGnome(gnomes[newIndex], newIndex);
+        }
+    }
+    
+    private void PrevGnome()
+    {
+        int newIndex;
+        if (activeIndex == 0)
+        {
+            newIndex = gnomes.Length - 1;
+        }
+        else
+        {
+            newIndex = activeIndex - 1;
+        }
+        if (gnomes[newIndex].GetComponent<TrappedGnome>() && gnomes[newIndex].GetComponent<TrappedGnome>().trapped)
+        {
+            activeIndex = newIndex;
+            NextGnome();
+        }
+        else
+        {
+            if (gnomes[newIndex].GetComponent<TrappedGnome>())
+            {
+                gnomes[newIndex].GetComponent<TrappedGnome>().enabled = false;
+            }
+            DeactivateCurrentGnome();
+            ActivateGnome(gnomes[newIndex], newIndex);
+        }
+    }
+
 }
