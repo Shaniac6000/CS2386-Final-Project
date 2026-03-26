@@ -17,6 +17,10 @@ public class TrappedGnome : MonoBehaviour
         if (other.CompareTag("TrappedTrigger"))
         {
             trapped = false;
+            
+            //cue the dialogue
+            var dm = FindObjectOfType<DialogueManager>();
+            dm.StartDialogue("soil_bag_removed");
         }
     }
 }
