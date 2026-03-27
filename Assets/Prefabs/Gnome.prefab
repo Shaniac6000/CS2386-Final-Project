@@ -104,12 +104,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 2.717295
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.35864747, z: 0}
 --- !u!143 &8697427465077861840
 CharacterController:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ CharacterController:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
@@ -148,12 +148,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GnomeController
   isActive: 0
-  speed: 8
+  speed: 10
   jumpHeight: 0.75
   airControl: 8
   gravity: 9.81
-  runprt: {fileID: 0}
-  pd: {fileID: 0}
+  runprt: {fileID: 7681122811258848129}
+  pd: {fileID: 8492201415144247811}
 --- !u!1 &4349106393928294960
 GameObject:
   m_ObjectHideFlags: 0
@@ -5000,7 +5000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6830498811446145111}
   - component: {fileID: 8492201415144247811}
-  - component: {fileID: 1013210620759623470}
+  - component: {fileID: 8254168844473332089}
   m_Layer: 0
   m_Name: PickupDetection (1)
   m_TagString: Untagged
@@ -5035,8 +5035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af556d1fe637d0d45b2181489a8473c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!65 &1013210620759623470
-BoxCollider:
+--- !u!135 &8254168844473332089
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5054,8 +5054,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8619404, y: 1, z: 0.42915344}
-  m_Center: {x: 0.008234343, y: 0, z: 0.74765146}
+  m_Radius: 1.6
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7973742886169945155
 PrefabInstance:
   m_ObjectHideFlags: 0
