@@ -1,7 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class TrappedGnome : MonoBehaviour
 {
+    public TMP_Text gnomeCount;
     public bool trapped = true;
     
     void OnTriggerEnter(Collider other)
@@ -17,6 +19,7 @@ public class TrappedGnome : MonoBehaviour
         if (other.CompareTag("TrappedTrigger"))
         {
             trapped = false;
+            gnomeCount.text = "Gnomies: 2";
             
             //cue the dialogue
             var dm = FindObjectOfType<DialogueManager>();
