@@ -5,6 +5,7 @@ public class LockBehavior : MonoBehaviour
     public bool locked = true;
     public AudioClip sfx;
     private Rigidbody rb;
+    public ParticleSystem prt;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class LockBehavior : MonoBehaviour
         {
             locked = false;
             rb.isKinematic = false;
+            prt.Play();
             if (sfx)
                 AudioSource.PlayClipAtPoint(sfx, transform.position);
         }

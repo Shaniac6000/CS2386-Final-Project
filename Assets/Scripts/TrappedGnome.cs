@@ -5,7 +5,8 @@ public class TrappedGnome : MonoBehaviour
 {
     public TMP_Text gnomeCount;
     public bool trapped = true;
-    
+    public PickupDetection pd;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("TrappedTrigger"))
@@ -20,9 +21,9 @@ public class TrappedGnome : MonoBehaviour
         {
             trapped = false;
             gnomeCount.text = "Gnomies: 2";
-            
+            pd.Untrap();
             //cue the dialogue
-            var dm = FindObjectOfType<DialogueManager>();
+            var dm = FindFirstObjectByType<DialogueManager>();
             dm.StartDialogue("soil_bag_removed");
         }
     }

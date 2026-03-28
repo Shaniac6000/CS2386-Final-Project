@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class GnomeManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class GnomeManager : MonoBehaviour
     private GameObject[] gnomes;
     private int activeIndex;
     private CameraFollow cameraFollow;
+    public TextMeshProUGUI grabIndicator;
     
     void Start()
     {
@@ -98,6 +100,7 @@ public class GnomeManager : MonoBehaviour
             }
             DeactivateCurrentGnome();
             ActivateGnome(gnomes[newIndex], newIndex);
+            grabIndicator.enabled = false;
         }
     }
     
@@ -125,6 +128,7 @@ public class GnomeManager : MonoBehaviour
             }
             DeactivateCurrentGnome();
             ActivateGnome(gnomes[newIndex], newIndex);
+            grabIndicator.enabled = false;
         }
     }
 

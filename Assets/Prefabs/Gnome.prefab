@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.23, y: -28.8, z: 13.85}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7575852363324867496}
@@ -106,10 +106,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.717295
+  m_Radius: 0.5478122
+  m_Height: 2.8488734
   m_Direction: 1
-  m_Center: {x: 0, y: 0.35864747, z: 0}
+  m_Center: {x: 0, y: 0.4244367, z: -0.047812223}
 --- !u!143 &8697427465077861840
 CharacterController:
   m_ObjectHideFlags: 0
@@ -154,6 +154,7 @@ MonoBehaviour:
   gravity: 9.81
   runprt: {fileID: 7681122811258848129}
   pd: {fileID: 8492201415144247811}
+  grabIndicator: {fileID: 0}
 --- !u!1 &4349106393928294960
 GameObject:
   m_ObjectHideFlags: 0
@@ -5002,7 +5003,7 @@ GameObject:
   - component: {fileID: 8492201415144247811}
   - component: {fileID: 8254168844473332089}
   m_Layer: 0
-  m_Name: PickupDetection (1)
+  m_Name: PickupDetection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5035,6 +5036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af556d1fe637d0d45b2181489a8473c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  grabIndicator: {fileID: 0}
 --- !u!135 &8254168844473332089
 SphereCollider:
   m_ObjectHideFlags: 0

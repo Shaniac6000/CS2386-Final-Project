@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,7 @@ public class GnomeController : MonoBehaviour
     public GameObject carrying {get; private set;}
     private bool isDragging;
     private Vector3 throwDirection;
+    public TextMeshProUGUI grabIndicator;
 
     void Start()
     {
@@ -93,9 +95,20 @@ public class GnomeController : MonoBehaviour
                     carrying.GetComponent<Rigidbody>().isKinematic = true;
                     carrying.GetComponent<Collider>().enabled = false;
                     isDragging = carrying.CompareTag("Draggable");
+                    grabIndicator.enabled = true;
+                    if (!isDragging)
+                    {
+                        grabIndicator.text = "Press E to Throw";
+                    }
+                    else
+                    {
+                        grabIndicator.text = "Press E to Drop";
+                    }
+
                 }
                 else if (carrying)
                 {
+                    grabIndicator.enabled = false;
                     carrying.GetComponent<Rigidbody>().isKinematic = false;
                     carrying.GetComponent<Collider>().enabled = true;
 
