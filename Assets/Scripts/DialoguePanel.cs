@@ -8,7 +8,8 @@ public class DialogueUI : MonoBehaviour
 
     void Start()
     {
-        panel.SetActive(false);
+        var dm = FindFirstObjectByType<DialogueManager>();
+        dm.StartDialogue("on_load");
     }
 
     public void Show(string line)
