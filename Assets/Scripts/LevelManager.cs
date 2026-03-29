@@ -12,8 +12,8 @@ public class LevelManager : MonoBehaviour
             maxLevel = buildIndex;
         }
         //cue the dialogue
-            var dm = FindFirstObjectByType<DialogueManager>();
-            dm.StartDialogue("end_of_level");
+            //var dm = FindFirstObjectByType<DialogueManager>();
+            //dm.StartDialogue("end_of_level");
     
         SceneManager.LoadScene(buildIndex);
     }
