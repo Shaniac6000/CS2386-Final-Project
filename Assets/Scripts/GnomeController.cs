@@ -23,6 +23,7 @@ public class GnomeController : MonoBehaviour
     private bool isDragging;
     private Vector3 throwDirection;
     public TextMeshProUGUI grabIndicator;
+    public Transform gnomeModel;
 
     void Start()
     {
@@ -32,6 +33,7 @@ public class GnomeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(Input.GetKeyDown(KeyCode.R))
         {
             // reset the level
@@ -40,6 +42,11 @@ public class GnomeController : MonoBehaviour
         }
         if (isActive)
         {
+            if (GetComponent<TrappedGnome>())
+            {
+                gnomeModel.localPosition = new Vector3(0.0599999987f,0.270000011f,-0.0700000003f);
+            }
+
             // get input
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
@@ -120,6 +127,11 @@ public class GnomeController : MonoBehaviour
                     isDragging = false;
                 }
             }
+        }
+        else if (!isActive && !controller.isGrounded)
+        {
+            moveDirection.y -= gravity * Time.deltaTime;
+            controller.Move(moveDirection * speed * Time.deltaTime);
         }
         
     }
