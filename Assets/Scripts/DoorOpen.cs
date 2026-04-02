@@ -7,14 +7,26 @@ public class DoorOpen : MonoBehaviour
     public LockBehavior lb;
     public PressurePlate p1;
     public PressurePlate p2;
+    private bool opened, dialogue;
 
     // Update is called once per frame
     void Update()
     {
         if (!lb.locked && p1.isPressed && p2.isPressed)
         {
-            door1.rotation = Quaternion.Lerp(door1.rotation, Quaternion.Euler(0,90,0), .5f * Time.deltaTime);
-            door2.rotation = Quaternion.Lerp(door2.rotation, Quaternion.Euler(0,-90,0), .5f * Time.deltaTime);
+            opened = true;
+        }
+        if (opened)
+        {
+            door1.rotation = Quaternion.Lerp(door1.rotation, Quaternion.Euler(0, 55f, 0), .5f * Time.deltaTime);
+            door2.rotation = Quaternion.Lerp(door2.rotation, Quaternion.Euler(0,-55, 0), .5f * Time.deltaTime);
+            //cue the dialogue
+            if (!dialogue)
+            {
+                var dm = FindFirstObjectByType<DialogueManager>();
+                dm.StartDialogue("end_of_level");
+                dialogue = true;
+            }
         }
     }
 }
