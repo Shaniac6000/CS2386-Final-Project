@@ -81,19 +81,6 @@ public class GnomeController : MonoBehaviour
                 runprt.Stop();
             }
 
-            if (carrying)
-            {
-                if(isDragging)
-                {
-                    carrying.transform.position = Vector3.Lerp(carrying.transform.position, transform.position - transform.forward * 3.5f - transform.up * 0.5f, Time.deltaTime * 15f);
-                }
-                else
-                {
-                carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 2.75f, transform.position.z);
-                carrying.transform.rotation = transform.rotation;
-                }
-            }
-
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (!carrying && pd.getTarget() != null)
@@ -132,6 +119,18 @@ public class GnomeController : MonoBehaviour
         {
             moveDirection.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection * speed * Time.deltaTime);
+        }
+        if (carrying)
+        {
+            if(isDragging)
+            {
+                carrying.transform.position = Vector3.Lerp(carrying.transform.position, transform.position - transform.forward * 3.5f - transform.up * 0.5f, Time.deltaTime * 15f);
+            }
+            else
+            {
+            carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 2.75f, transform.position.z);
+            carrying.transform.rotation = transform.rotation;
+            }
         }
         
     }

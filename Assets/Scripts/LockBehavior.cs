@@ -31,6 +31,8 @@ public class LockBehavior : MonoBehaviour
             {
                 dm.StartDialogue("after_get_up");
             }
+
+            gameObject.tag = "Throwable";
         }
     }
 }
