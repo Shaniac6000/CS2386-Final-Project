@@ -2,6 +2,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(CharacterController))]
 public class GnomeController : MonoBehaviour
@@ -24,6 +25,7 @@ public class GnomeController : MonoBehaviour
     private Vector3 throwDirection;
     public TextMeshProUGUI grabIndicator;
     public Transform gnomeModel;
+    public bool thrown = false;
 
     void Start()
     {
@@ -40,7 +42,7 @@ public class GnomeController : MonoBehaviour
             //could add in a wait here but i dont feel like making a coroutine just for that lol
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        if (isActive)
+        if (isActive && !thrown)
         {
             if (GetComponent<TrappedGnome>())
             {
@@ -86,7 +88,12 @@ public class GnomeController : MonoBehaviour
                 if (!carrying && pd.getTarget() != null)
                 {
                     carrying = pd.getTarget();
-                    carrying.GetComponent<Rigidbody>().isKinematic = true;
+                    if (carrying.GetComponent<Rigidbody>()) 
+                        carrying.GetComponent<Rigidbody>().isKinematic = true;
+                    else if (carrying.GetComponent<CharacterController>())
+                    {
+                        carrying.GetComponent<CharacterController>().enabled = false;
+                    }
                     carrying.GetComponent<Collider>().enabled = false;
                     isDragging = carrying.CompareTag("Draggable");
                     grabIndicator.enabled = true;
@@ -103,12 +110,27 @@ public class GnomeController : MonoBehaviour
                 else if (carrying)
                 {
                     grabIndicator.enabled = false;
-                    carrying.GetComponent<Rigidbody>().isKinematic = false;
+                    if (carrying.GetComponent<Rigidbody>())
+                        carrying.GetComponent<Rigidbody>().isKinematic = false;
+                    else if (carrying.GetComponent<CharacterController>())
+                    {
+                        carrying.GetComponent<CharacterController>().enabled = true;
+                    }
                     carrying.GetComponent<Collider>().enabled = true;
 
                     if(!isDragging)
                     {
-                        carrying.GetComponent<Rigidbody>().linearVelocity = throwDirection;
+                        if (carrying.GetComponent<Rigidbody>())
+                        {
+                            throwDirection.x *= 1.5f;
+                            throwDirection.z *= 1.5f;
+                            carrying.GetComponent<Rigidbody>().linearVelocity = throwDirection;
+                        }
+                        else if (carrying.GetComponent<CharacterController>())
+                        {
+                            carrying.GetComponent<GnomeController>().moveDirection = throwDirection / 3;
+                            carrying.GetComponent<GnomeController>().thrown = true;
+                        }
                     }
                     carrying = null;
                     isDragging = false;
@@ -120,6 +142,17 @@ public class GnomeController : MonoBehaviour
             moveDirection.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection * speed * Time.deltaTime);
         }
+
+        if (thrown && !isActive)
+        {
+            moveDirection.y -= gravity / 3 * Time.deltaTime;
+            controller.Move(moveDirection * Time.deltaTime);
+            if (controller.isGrounded)
+            {
+                thrown = false;
+            }
+        }
+
         if (carrying)
         {
             if(isDragging)
@@ -128,11 +161,13 @@ public class GnomeController : MonoBehaviour
             }
             else
             {
-            carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 2.75f, transform.position.z);
-            carrying.transform.rotation = transform.rotation;
+                if (!carrying.CompareTag("Gnome"))
+                    carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 4f, transform.position.z);
+                else
+                    carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
+                carrying.transform.rotation = transform.rotation;
             }
         }
-        
     }
 
     void Jump()

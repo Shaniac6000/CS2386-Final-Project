@@ -51,6 +51,7 @@ public class GnomeManager : MonoBehaviour
         activeGnome = gnome;
         activeIndex = index;
         activeGnome.GetComponent<GnomeController>().isActive = true;
+        activeGnome.GetComponent<GnomeController>().thrown = false;
         //activeGnome.GetComponent<CharacterController>().enabled = true;
         activeGnome.GetComponentInChildren<PickupDetection>().enabled = true;
     }

@@ -12,22 +12,33 @@ public class PickupDetection : MonoBehaviour
         if (transform.parent.gameObject.GetComponent<TrappedGnome>())
         {
             trapped = true;
+            grabIndicator.enabled = false;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if ((other.CompareTag("Throwable") || other.CompareTag("Draggable")) && !trapped)
+        if (!trapped && !transform.parent.GetComponent<GnomeController>().carrying)
         {
-            target = other.gameObject;
-            grabIndicator.text = "Press E to Grab";
-            grabIndicator.enabled = true;
+            if (other.CompareTag("Throwable") || other.CompareTag("Draggable"))
+            {
+                target = other.gameObject;
+                grabIndicator.text = "Press E to Grab";
+                grabIndicator.enabled = true;
+            }
+
+            if (other.name != transform.parent.name && other.CompareTag("Gnome") && !(other.GetComponent<TrappedGnome>() && other.GetComponent<TrappedGnome>().trapped))
+            {
+                target = other.gameObject;
+                grabIndicator.text = "Press E to Stack";
+                grabIndicator.enabled = true;
+            }
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Throwable") || other.CompareTag("Draggable"))
+        if (other.CompareTag("Throwable") || other.CompareTag("Draggable") || other.CompareTag("Gnome"))
         {
             target = null;
             grabIndicator.enabled = false;
