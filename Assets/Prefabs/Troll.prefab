@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2326292020507742385}
   m_Layer: 0
   m_Name: Troll
-  m_TagString: Untagged
+  m_TagString: Troll
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

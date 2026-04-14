@@ -1,8 +1,7 @@
+using Ink.Parsed;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore.Text;
 
 [RequireComponent(typeof(CharacterController))]
 public class GnomeController : MonoBehaviour
@@ -26,10 +25,12 @@ public class GnomeController : MonoBehaviour
     public TextMeshProUGUI grabIndicator;
     public Transform gnomeModel;
     public bool thrown = false;
+    private TextMeshProUGUI deathText;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        deathText = GameObject.FindGameObjectWithTag("DeathText").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -41,6 +42,7 @@ public class GnomeController : MonoBehaviour
             // reset the level
             //could add in a wait here but i dont feel like making a coroutine just for that lol
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1;
         }
         if (isActive && !thrown)
         {
@@ -191,6 +193,15 @@ public class GnomeController : MonoBehaviour
             input.y = moveDirection.y;
             moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
             runprt.Stop();
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Troll"))
+        {
+            Time.timeScale = 0;
+            deathText.enabled = true;
         }
     }
 }
