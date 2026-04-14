@@ -9,6 +9,9 @@ TagManager:
   - Draggable
   - LevelManager
   - TrappedTrigger
+  - GnomeManager
+  - DeathText
+  - Troll
   layers:
   - Default
   - TransparentFX
