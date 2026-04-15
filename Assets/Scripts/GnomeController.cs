@@ -11,8 +11,6 @@ public class GnomeController : MonoBehaviour
     public float jumpHeight;
     public float airControl = 10f;
     public float gravity = 9.81f;
-    private static Vector3 isoRight = new Vector3( 1, 0, -1).normalized; // D
-    private static Vector3 isoForward = new Vector3( 1, 0,  1).normalized; // W
     private CharacterController controller;
     private Vector3 input, moveDirection;
     private float currentVelocity;
@@ -26,11 +24,16 @@ public class GnomeController : MonoBehaviour
     public Transform gnomeModel;
     public bool thrown = false;
     private TextMeshProUGUI deathText;
+     private Vector3 forward, right;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         deathText = GameObject.FindGameObjectWithTag("DeathText").GetComponent<TextMeshProUGUI>();
+        forward = Camera.main.transform.forward;
+        forward.y = 0;
+        forward = Vector3.Normalize(forward);
+        right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
     }
 
     // Update is called once per frame
@@ -52,11 +55,11 @@ public class GnomeController : MonoBehaviour
             }
 
             // get input
-            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveHorizontal = Input.GetAxis("Horizontal") ;
             float moveVertical = Input.GetAxis("Vertical");
 
             // input vector
-            input = isoRight * moveHorizontal + isoForward * moveVertical;
+            input = right * moveHorizontal + forward * moveVertical;
 
             if (input.magnitude > 1f)
             {
