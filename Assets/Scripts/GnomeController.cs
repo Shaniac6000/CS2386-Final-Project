@@ -24,7 +24,12 @@ public class GnomeController : MonoBehaviour
     public Transform gnomeModel;
     public bool thrown = false;
     private TextMeshProUGUI deathText;
-     private Vector3 forward, right;
+    private Vector3 forward, right;
+    public AudioClip jump;
+    public AudioClip pickup;
+    public AudioClip throwing;
+    public AudioClip death;
+    private AudioSource source;
 
     void Start()
     {
@@ -34,6 +39,7 @@ public class GnomeController : MonoBehaviour
         forward.y = 0;
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -92,6 +98,8 @@ public class GnomeController : MonoBehaviour
             {
                 if (!carrying && pd.getTarget() != null)
                 {
+                    source.clip = pickup;
+                    source.Play();
                     carrying = pd.getTarget();
                     if (carrying.GetComponent<Rigidbody>()) 
                         carrying.GetComponent<Rigidbody>().isKinematic = true;
@@ -114,6 +122,8 @@ public class GnomeController : MonoBehaviour
                 }
                 else if (carrying)
                 {
+                    source.clip = throwing;
+                    source.Play();
                     grabIndicator.enabled = false;
                     if (carrying.GetComponent<Rigidbody>())
                         carrying.GetComponent<Rigidbody>().isKinematic = false;
@@ -183,6 +193,8 @@ public class GnomeController : MonoBehaviour
             // jump
             if (Input.GetButton("Jump"))
             {
+                source.clip = jump;
+                source.Play();
                 moveDirection.y = Mathf.Sqrt(2 * jumpHeight * gravity);
             }
             else
@@ -203,6 +215,8 @@ public class GnomeController : MonoBehaviour
     {
         if (other.CompareTag("Troll"))
         {
+            source.clip = death;
+            source.Play();
             Time.timeScale = 0;
             deathText.enabled = true;
         }
