@@ -30,6 +30,7 @@ public class GnomeController : MonoBehaviour
     public AudioClip throwing;
     public AudioClip death;
     private AudioSource source;
+    private Animator animator;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class GnomeController : MonoBehaviour
         forward = Vector3.Normalize(forward);
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
         source = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -182,6 +184,14 @@ public class GnomeController : MonoBehaviour
                     carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
                 carrying.transform.rotation = transform.rotation;
             }
+        }
+        if(controller.velocity.magnitude > 0.1)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
     }
 
