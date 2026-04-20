@@ -185,14 +185,9 @@ public class GnomeController : MonoBehaviour
                 carrying.transform.rotation = transform.rotation;
             }
         }
-        if(controller.velocity.magnitude > 0.1)
-        {
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
+        bool isMoving = input.magnitude > 0.1f && controller.isGrounded && isActive;
+        animator.SetBool("isWalking", isMoving);
+
     }
 
     void Jump()
