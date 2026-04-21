@@ -905,6 +905,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2550225662366794786, guid: f81baa22375580e4e9ff2f232f3a8804, type: 3}
+      propertyPath: gnomeCounter
+      value: 
+      objectReference: {fileID: 1987070582}
     - target: {fileID: 3926335799168280585, guid: f81baa22375580e4e9ff2f232f3a8804, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1375,7 +1379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL 1/5
+  m_text: LEVEL 3/3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3770,6 +3774,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2550225662366794786, guid: f81baa22375580e4e9ff2f232f3a8804, type: 3}
+      propertyPath: gnomeCounter
+      value: 
+      objectReference: {fileID: 1987070582}
     - target: {fileID: 3926335799168280585, guid: f81baa22375580e4e9ff2f232f3a8804, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -9984,6 +9992,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2550225662366794786, guid: f81baa22375580e4e9ff2f232f3a8804, type: 3}
+      propertyPath: gnomeCounter
+      value: 
+      objectReference: {fileID: 1987070582}
     - target: {fileID: 3926335799168280585, guid: f81baa22375580e4e9ff2f232f3a8804, type: 3}
       propertyPath: m_Mesh
       value: 

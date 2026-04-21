@@ -189,6 +189,10 @@ public class GnomeController : MonoBehaviour
             }
         }
         bool isMoving = input.magnitude > 0.1f && controller.isGrounded && isActive;
+        if (!isMoving)
+        {
+            runprt.Stop();
+        }
         animator.SetBool("isWalking", isMoving);
 
     }

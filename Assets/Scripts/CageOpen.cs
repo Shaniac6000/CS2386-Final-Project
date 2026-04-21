@@ -1,8 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class CageOpen : MonoBehaviour
 {
     private bool unlocked;
+    private static int gnomesFreed;
+    public TextMeshProUGUI gnomeCounter;
+
+    void Start()
+    {
+        gnomesFreed = 1;
+    } 
 
     // Update is called once per frame
     void Update()
@@ -18,6 +26,8 @@ public class CageOpen : MonoBehaviour
             GetComponent<AudioSource>().Play();
             unlocked = true;
             Destroy(collision.gameObject);
+            gnomesFreed++;
+            gnomeCounter.text = "Gnomies: " + gnomesFreed;
         }
     }
 }
