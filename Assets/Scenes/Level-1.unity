@@ -6788,6 +6788,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3344471316086000651, guid: 5fd76413c5890406689031301aeac8a9, type: 3}
   m_PrefabInstance: {fileID: 1042307739}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1046433672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7575852363324867496, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+  m_PrefabInstance: {fileID: 1662670084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1065258543
 GameObject:
   m_ObjectHideFlags: 0
@@ -11379,6 +11384,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2774220145247917891, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: gnomeModel
+      value: 
+      objectReference: {fileID: 1046433672}
     - target: {fileID: 2774220145247917891, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
       propertyPath: grabIndicator
       value: 

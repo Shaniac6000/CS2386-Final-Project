@@ -193,8 +193,10 @@ public class GnomeController : MonoBehaviour
         {
             runprt.Stop();
         }
-        animator.SetBool("isWalking", isMoving);
-
+        if (animator)
+        {
+            animator.SetBool("isWalking", isMoving);
+        }
     }
 
     void Jump()
