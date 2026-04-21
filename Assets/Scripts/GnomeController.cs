@@ -1,5 +1,6 @@
 using Ink.Parsed;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -181,11 +182,21 @@ public class GnomeController : MonoBehaviour
             }
             else
             {
-                if (!carrying.CompareTag("Gnome"))
-                    carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 4f, transform.position.z);
-                else
+                if (carrying.CompareTag("Gnome"))
+                {
                     carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 5f, transform.position.z);
-                carrying.transform.rotation = transform.rotation;
+                    carrying.transform.rotation = transform.rotation;
+                }
+                else if (carrying.layer == LayerMask.NameToLayer("Key"))
+                {
+                    carrying.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + 1.5f, transform.position.z - 1f);
+                    carrying.transform.rotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
+                }
+                else
+                {
+                    carrying.transform.position = new Vector3(transform.position.x, transform.position.y + 4f, transform.position.z);
+                    carrying.transform.rotation = transform.rotation;
+                }
             }
         }
         bool isMoving = input.magnitude > 0.1f && controller.isGrounded && isActive;
