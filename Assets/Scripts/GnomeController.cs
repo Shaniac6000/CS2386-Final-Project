@@ -163,7 +163,10 @@ public class GnomeController : MonoBehaviour
         if (thrown && !isActive)
         {
             moveDirection.y -= gravity / 3 * Time.deltaTime;
-            controller.Move(moveDirection * Time.deltaTime);
+            if (controller.enabled) // added this guard
+            {
+                controller.Move(moveDirection * Time.deltaTime);
+            }
             if (controller.isGrounded)
             {
                 thrown = false;
