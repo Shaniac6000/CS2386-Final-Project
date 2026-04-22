@@ -18,7 +18,7 @@ VAR have_key = true
 VAR saved_all = false
 == open_door ==
  {saved_all == false:
- "Something opened! But don't leave without the other gnomies!" 
+ "Something opened in the deck below us, but don't leave without the other gnomies!" 
  - else: 
  "Look at that! Somethin' opened up down there- Let's head inside."
  }
