@@ -5120,6 +5120,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2774220145247917891, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: grabIndicator
+      value: 
+      objectReference: {fileID: 97038242}
     - target: {fileID: 4027533373226938690, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
       propertyPath: m_Name
       value: Gnome (1)
@@ -5136,6 +5140,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[8]'
       value: 
       objectReference: {fileID: 2100000, guid: 7b94cdef7b105b14ba51b7a51bbc831d, type: 2}
+    - target: {fileID: 8492201415144247811, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: grabIndicator
+      value: 
+      objectReference: {fileID: 97038242}
+    - target: {fileID: 8697427465077861840, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8703657939395312315, guid: 5a0cf01ff194f13498dcdfc37101c094, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -6186,6 +6198,70 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &901089451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901089453}
+  - component: {fileID: 901089452}
+  m_Layer: 0
+  m_Name: NavMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &901089452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901089451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: d2c6b4040da7b8e4bbb533f36db207e7, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &901089453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901089451}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -35.16887, y: -3.87494, z: 5.80278}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &923946444
 Mesh:
   m_ObjectHideFlags: 0
@@ -7416,10 +7492,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 5d2d6479890ce18479db63dced1f3af8, type: 2}
+    - target: {fileID: 2179173409397234041, guid: df38bf916e35fab45889d10214aa5705, type: 3}
+      propertyPath: grabIndicator
+      value: 
+      objectReference: {fileID: 97038242}
     - target: {fileID: 3933591977320565810, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: m_Name
       value: Gnome 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4010963262058955194, guid: df38bf916e35fab45889d10214aa5705, type: 3}
+      propertyPath: grabIndicator
+      value: 
+      objectReference: {fileID: 97038242}
     - target: {fileID: 7805956157362539906, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -7988,10 +8072,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 55554e3afc32a0f4fa0584eb8de996b7, type: 2}
+    - target: {fileID: 2179173409397234041, guid: df38bf916e35fab45889d10214aa5705, type: 3}
+      propertyPath: grabIndicator
+      value: 
+      objectReference: {fileID: 97038242}
     - target: {fileID: 3933591977320565810, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: m_Name
       value: Gnome 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4010963262058955194, guid: df38bf916e35fab45889d10214aa5705, type: 3}
+      propertyPath: grabIndicator
+      value: 
+      objectReference: {fileID: 97038242}
     - target: {fileID: 7805956157362539906, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -19386,7 +19478,7 @@ PrefabInstance:
     - target: {fileID: 2179173409397234041, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: grabIndicator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 97038242}
     - target: {fileID: 2661423407874566547, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.6292866
@@ -19422,7 +19514,7 @@ PrefabInstance:
     - target: {fileID: 4010963262058955194, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: grabIndicator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 97038242}
     - target: {fileID: 4470854238339688144, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: m_Controller
       value: 
@@ -19797,3 +19889,4 @@ SceneRoots:
   - {fileID: 1715642328}
   - {fileID: 1184529875}
   - {fileID: 1269999196}
+  - {fileID: 901089453}
