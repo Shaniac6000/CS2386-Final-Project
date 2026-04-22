@@ -6,6 +6,7 @@ public class LevelGoal : MonoBehaviour
 {
     private LevelManager lm;
     private DialogueManager dm;
+    public float delayTime;
 
     void Start()
     {
@@ -25,7 +26,15 @@ public class LevelGoal : MonoBehaviour
     IEnumerator PlayDialogueThenLoad()
     {
         dm.StartDialogue("end_of_level");
-        yield return new WaitForSeconds(8f); 
-        lm.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        yield return new WaitForSeconds(delayTime);
+        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if(nextIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            lm.LoadLevel(nextIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

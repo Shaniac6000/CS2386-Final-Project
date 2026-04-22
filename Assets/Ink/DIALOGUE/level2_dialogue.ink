@@ -27,9 +27,9 @@ VAR have_key = false
  }
  -> END
  
-VAR all_saved = false
+VAR saved_all = false
 == end_of_level ==
-{all_saved == true:
+{saved_all == true:
 "Nice job gnomies, let's take a break and recoup at the shed. We can save s'more in the mornin."
 - else:
 "You can't leave 'ere without the other gnomes, head back and look around s'more."
