@@ -1,5 +1,5 @@
-== on_level2_load ==
-"Alright, we's gotta save some more of our friends- but be careful not to wake them sleepin trolls!"
+== on_load ==
+"Alright, we's gotta save s'more gnomies- but be careful not to wake them sleepin' trolls or fall in that lake!"
 -> END
 
 VAR have_key = false
@@ -21,13 +21,17 @@ VAR have_key = false
  
  VAR first_gnome_saved = false
  {first_gnome_saved == true:
- "My savior! You rescued me, so let me join you! You can pick me up and throw me to reach higher places. Just press E."
+ "My savior! You rescued me, so let me join you! You can pick me up and stack me to reach higher places. Just press E."
  - else:
- "Thank you for freeing me!"
+ "Thank you for freeing me! Let's get out of here, let's get over the wall over there."
  }
  -> END
  
-
+VAR all_saved = false
 == end_of_level ==
-"Nice job guy, let's take a break and recoup at the shed. We can save s'more in the mornin."
+{all_saved == false:
+"You can't leave 'ere without the other gnomes, head back and look around s'more."
+- else:
+"Nice job gnomies, let's take a break and recoup at the shed. We can save s'more in the mornin."
+} 
 -> END

@@ -1,4 +1,4 @@
-== start_level_3 ==
+== on_load ==
 "Shh...the trolls are up. Don't let them see ya or they'll chase ya and lock yous up."
 -> END
 
@@ -19,6 +19,6 @@ VAR saved_all = false
  }
 -> END
 
-== end_of_level3 ==
+== end_of_level ==
 "Here's tha big one...let's go take back our garden!"
 -> END

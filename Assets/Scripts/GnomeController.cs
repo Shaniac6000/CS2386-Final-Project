@@ -32,6 +32,7 @@ public class GnomeController : MonoBehaviour
     public AudioClip death;
     private AudioSource source;
     private Animator animator;
+    private DialogueManager dm;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class GnomeController : MonoBehaviour
         right = Quaternion.Euler(new Vector3(0, 90, 0)) * forward;
         source = GetComponent<AudioSource>();
         animator = GetComponentInChildren<Animator>();
+        dm = FindFirstObjectByType<DialogueManager>();
     }
 
     // Update is called once per frame
@@ -191,6 +193,7 @@ public class GnomeController : MonoBehaviour
                 {
                     carrying.transform.position = new Vector3(transform.position.x + 1.5f, transform.position.y + 1.5f, transform.position.z - 1f);
                     carrying.transform.rotation = transform.rotation * Quaternion.Euler(0f, 180f, 0f);
+                    dm.story.variablesState["have_key"] = true;
                 }
                 else
                 {
@@ -207,6 +210,10 @@ public class GnomeController : MonoBehaviour
         if (animator)
         {
             animator.SetBool("isWalking", isMoving);
+        }
+        if(carrying && carrying.CompareTag("Throwable") && carrying.gameObject.layer == LayerMask.NameToLayer("Key"))
+        {
+         //   dm.StartDialogue("get_key");
         }
     }
 
@@ -246,4 +253,5 @@ public class GnomeController : MonoBehaviour
             deathText.enabled = true;
         }
     }
+
 }
