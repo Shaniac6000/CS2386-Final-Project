@@ -12,6 +12,7 @@ TagManager:
   - GnomeManager
   - DeathText
   - Troll
+  - Trigger
   layers:
   - Default
   - TransparentFX
