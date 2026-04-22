@@ -13,6 +13,8 @@ TagManager:
   - DeathText
   - Troll
   - Trigger
+  - Water
+  - DeathText2
   layers:
   - Default
   - TransparentFX

@@ -19,7 +19,7 @@ VAR have_key = false
  
  == saved_gnome ==
  
- VAR first_gnome_saved = false
+ VAR first_gnome_saved = true
  {first_gnome_saved == true:
  "My savior! You rescued me, so let me join you! You can pick me up and stack me to reach higher places. Just press E."
  - else:
@@ -29,9 +29,9 @@ VAR have_key = false
  
 VAR all_saved = false
 == end_of_level ==
-{all_saved == false:
-"You can't leave 'ere without the other gnomes, head back and look around s'more."
-- else:
+{all_saved == true:
 "Nice job gnomies, let's take a break and recoup at the shed. We can save s'more in the mornin."
+- else:
+"You can't leave 'ere without the other gnomes, head back and look around s'more."
 } 
 -> END

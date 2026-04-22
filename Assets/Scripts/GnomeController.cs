@@ -25,6 +25,7 @@ public class GnomeController : MonoBehaviour
     public Transform gnomeModel;
     public bool thrown = false;
     private TextMeshProUGUI deathText;
+    private TextMeshProUGUI deathText2;
     private Vector3 forward, right;
     public AudioClip jump;
     public AudioClip pickup;
@@ -38,6 +39,7 @@ public class GnomeController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         deathText = GameObject.FindGameObjectWithTag("DeathText").GetComponent<TextMeshProUGUI>();
+        deathText2 = GameObject.FindGameObjectWithTag("DeathText2").GetComponent<TextMeshProUGUI>();
         forward = Camera.main.transform.forward;
         forward.y = 0;
         forward = Vector3.Normalize(forward);
@@ -103,6 +105,7 @@ public class GnomeController : MonoBehaviour
             {
                 if (!carrying && pd.getTarget() != null)
                 {
+
                     source.clip = pickup;
                     source.Play();
                     carrying = pd.getTarget();
@@ -115,6 +118,7 @@ public class GnomeController : MonoBehaviour
                     carrying.GetComponent<Collider>().enabled = false;
                     isDragging = carrying.CompareTag("Draggable");
                     grabIndicator.enabled = true;
+
                     if (!isDragging)
                     {
                         grabIndicator.text = "Press E to Throw";
@@ -122,6 +126,10 @@ public class GnomeController : MonoBehaviour
                     else
                     {
                         grabIndicator.text = "Press E to Drop";
+                    }
+                  if(carrying.layer == LayerMask.NameToLayer("Key"))
+                    {
+                        dm.StartDialogue("get_key");
                     }
 
                 }
@@ -211,10 +219,6 @@ public class GnomeController : MonoBehaviour
         {
             animator.SetBool("isWalking", isMoving);
         }
-        if(carrying && carrying.CompareTag("Throwable") && carrying.gameObject.layer == LayerMask.NameToLayer("Key"))
-        {
-         //   dm.StartDialogue("get_key");
-        }
     }
 
     void Jump()
@@ -252,11 +256,18 @@ public class GnomeController : MonoBehaviour
             Time.timeScale = 0;
             deathText.enabled = true;
         }
+       
+        if (other.CompareTag("Water"))
+        {
+            source.clip = death;
+            source.Play();
+            Time.timeScale = 0;
+            deathText2.enabled = true;
+        }
 
         if (other.CompareTag("Trigger"))
         {
             dm.StartDialogue("reach_wall");
         }
     }
-
 }

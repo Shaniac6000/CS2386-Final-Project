@@ -6,6 +6,7 @@ public class DialogueManager : MonoBehaviour
 {
      public TextAsset inkJSONAsset;
      public DialogueUI dialogueUI;
+     public float delayTime;
 
     public Story story;
 
@@ -36,7 +37,7 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator AutoContinue()
     {
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(delayTime);
         ContinueStory();
     }
 

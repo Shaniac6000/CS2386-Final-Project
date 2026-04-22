@@ -32,14 +32,13 @@ public class CageOpen : MonoBehaviour
             Destroy(collision.gameObject);
             gnomesFreed++;
             gnomeCounter.text = "Gnomies: " + gnomesFreed;
-           
-            dm.story.variablesState["first_gnome_saved"] = true;
+             
             if(gnomesFreed > 2)
             {
                 dm.story.variablesState["first_gnome_saved"] = false;
                 dm.story.variablesState["saved_all"] = true;
             }
-                dm.StartDialogue("open_cage");
+            dm.StartDialogue("open_cage");
         }
     }
 }

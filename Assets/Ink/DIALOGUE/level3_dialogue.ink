@@ -3,19 +3,26 @@
 -> END
 
 == reach_wall ==
-"Looks like you can throw someone ova that wall there and go 'round the back end...""
+"Looks like you can throw someone ova that fence and go 'round the back end...""
 -> END
 
+VAR have_key = true
 == get_key ==
-"Nice a key! Go free them gnome!"
+"Nice a key! Go free them gnomes!"
+-> END
+
+== open_cage ==
+"Thank you for saving me!"
 -> END
 
 VAR saved_all = false
-== end_of_level ==
+== open_door ==
  {saved_all == false:
- "Looks like these only activate when 3 gnomes stand on em...find the other gnomes!" 
+ "Something opened! But don't leave without the other gnomies!" 
  - else: 
- "Look at that! Somethin' opened up down there!"
+ "Look at that! Somethin' opened up down there- Let's head inside."
  }
 -> END
-
+== end_of_level ==
+"Let's take back our garden!"
+-> END

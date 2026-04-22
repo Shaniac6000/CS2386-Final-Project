@@ -32,15 +32,13 @@ public class DoorOpen : MonoBehaviour
 
         if (opened)
         {
-            if(door1 && door2)
-            {
+            
                 door1.rotation = Quaternion.Lerp(door1.rotation, Quaternion.Euler(0, 55f, 0), .5f * Time.deltaTime);
                 door2.rotation = Quaternion.Lerp(door2.rotation, Quaternion.Euler(0,-55, 0), .5f * Time.deltaTime);
-            }
             //cue the dialogue
             if (!dialogue)
             {
-                dm.StartDialogue("end_of_level");
+                dm.StartDialogue("open_door");
                 if (sfx)
                 {
                     AudioSource.PlayClipAtPoint(sfx, transform.position);
