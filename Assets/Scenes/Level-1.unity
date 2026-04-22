@@ -8071,6 +8071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gnome 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4010963262058955194, guid: df38bf916e35fab45889d10214aa5705, type: 3}
+      propertyPath: grabIndicator
+      value: 
+      objectReference: {fileID: 1224111793}
     - target: {fileID: 8969619714573657774, guid: df38bf916e35fab45889d10214aa5705, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.07

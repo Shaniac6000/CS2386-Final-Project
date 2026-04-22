@@ -106,7 +106,7 @@ public class GnomeController : MonoBehaviour
                     source.clip = pickup;
                     source.Play();
                     carrying = pd.getTarget();
-                    if (carrying.GetComponent<Rigidbody>()) 
+                    if (carrying.GetComponent<Rigidbody>())
                         carrying.GetComponent<Rigidbody>().isKinematic = true;
                     else if (carrying.GetComponent<CharacterController>())
                     {

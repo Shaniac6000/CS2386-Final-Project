@@ -11,7 +11,7 @@
 -> END
 
 VAR saved_all = false
-== reach_pressure_plates ==
+== end_of_level ==
  {saved_all == false:
  "Looks like these only activate when 3 gnomes stand on em...find the other gnomes!" 
  - else: 
@@ -19,6 +19,3 @@ VAR saved_all = false
  }
 -> END
 
-== end_of_level ==
-"Here's tha big one...let's go take back our garden!"
--> END
