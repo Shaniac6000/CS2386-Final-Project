@@ -15,7 +15,7 @@ VAR saved_all = false
  {saved_all == false:
  "Looks like these only activate when 3 gnomes stand on em...find the other gnomes!" 
  - else: 
- "Look at that! Somethin' opened up"
+ "Look at that! Somethin' opened up down there!"
  }
 -> END
 

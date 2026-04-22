@@ -252,6 +252,11 @@ public class GnomeController : MonoBehaviour
             Time.timeScale = 0;
             deathText.enabled = true;
         }
+
+        if (other.CompareTag("Trigger"))
+        {
+            dm.StartDialogue("reach_wall");
+        }
     }
 
 }
